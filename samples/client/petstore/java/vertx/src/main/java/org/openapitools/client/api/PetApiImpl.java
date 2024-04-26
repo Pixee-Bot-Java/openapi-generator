@@ -128,7 +128,9 @@ public class PetApiImpl implements PetApi {
         // header params
         MultiMap localVarHeaderParams = MultiMap.caseInsensitiveMultiMap();
         if (apiKey != null)
-        localVarHeaderParams.add("api_key", apiClient.parameterToString(apiKey));
+        {
+            localVarHeaderParams.add("api_key", apiClient.parameterToString(apiKey));
+        }
 
         // cookie params
         MultiMap localVarCookieParams = MultiMap.caseInsensitiveMultiMap();

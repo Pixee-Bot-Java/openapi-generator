@@ -170,7 +170,9 @@ public class FakeApi extends BaseApi {
         
 
         if (header1 != null)
-        localVarHeaderParams.add("header_1", apiClient.parameterToString(header1));
+        {
+            localVarHeaderParams.add("header_1", apiClient.parameterToString(header1));
+        }
 
         final String[] localVarAccepts = {  };
         final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -813,9 +815,13 @@ public class FakeApi extends BaseApi {
         
 
         if (enumHeaderStringArray != null)
-        localVarHeaderParams.add("enum_header_string_array", apiClient.parameterToString(enumHeaderStringArray));
+        {
+            localVarHeaderParams.add("enum_header_string_array", apiClient.parameterToString(enumHeaderStringArray));
+        }
         if (enumHeaderString != null)
-        localVarHeaderParams.add("enum_header_string", apiClient.parameterToString(enumHeaderString));
+        {
+            localVarHeaderParams.add("enum_header_string", apiClient.parameterToString(enumHeaderString));
+        }
 
         if (enumFormStringArray != null)
             localVarFormParams.addAll("enum_form_string_array", enumFormStringArray);
@@ -894,9 +900,13 @@ public class FakeApi extends BaseApi {
         
 
         if (requiredBooleanGroup != null)
-        localVarHeaderParams.add("required_boolean_group", apiClient.parameterToString(requiredBooleanGroup));
+        {
+            localVarHeaderParams.add("required_boolean_group", apiClient.parameterToString(requiredBooleanGroup));
+        }
         if (booleanGroup != null)
-        localVarHeaderParams.add("boolean_group", apiClient.parameterToString(booleanGroup));
+        {
+            localVarHeaderParams.add("boolean_group", apiClient.parameterToString(booleanGroup));
+        }
 
         final String[] localVarAccepts = {  };
         final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

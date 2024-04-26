@@ -75,15 +75,25 @@ public class HeaderApi extends BaseApi {
         final MultiValueMap<String, Object> localVarFormParams = new LinkedMultiValueMap<String, Object>();
 
         if (integerHeader != null)
-        localVarHeaderParams.add("integer_header", apiClient.parameterToString(integerHeader));
+        {
+            localVarHeaderParams.add("integer_header", apiClient.parameterToString(integerHeader));
+        }
         if (booleanHeader != null)
-        localVarHeaderParams.add("boolean_header", apiClient.parameterToString(booleanHeader));
+        {
+            localVarHeaderParams.add("boolean_header", apiClient.parameterToString(booleanHeader));
+        }
         if (stringHeader != null)
-        localVarHeaderParams.add("string_header", apiClient.parameterToString(stringHeader));
+        {
+            localVarHeaderParams.add("string_header", apiClient.parameterToString(stringHeader));
+        }
         if (enumNonrefStringHeader != null)
-        localVarHeaderParams.add("enum_nonref_string_header", apiClient.parameterToString(enumNonrefStringHeader));
+        {
+            localVarHeaderParams.add("enum_nonref_string_header", apiClient.parameterToString(enumNonrefStringHeader));
+        }
         if (enumRefStringHeader != null)
-        localVarHeaderParams.add("enum_ref_string_header", apiClient.parameterToString(enumRefStringHeader));
+        {
+            localVarHeaderParams.add("enum_ref_string_header", apiClient.parameterToString(enumRefStringHeader));
+        }
 
         final String[] localVarAccepts = { 
             "text/plain"

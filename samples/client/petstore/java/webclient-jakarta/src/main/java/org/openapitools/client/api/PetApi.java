@@ -149,7 +149,9 @@ public class PetApi {
 
 
         if (apiKey != null)
-        headerParams.add("api_key", apiClient.parameterToString(apiKey));
+        {
+            headerParams.add("api_key", apiClient.parameterToString(apiKey));
+        }
         final String[] localVarAccepts = { };
         final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         final String[] localVarContentTypes = { };
