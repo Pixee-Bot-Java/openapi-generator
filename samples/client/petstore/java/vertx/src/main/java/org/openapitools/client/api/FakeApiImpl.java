@@ -174,7 +174,9 @@ public class FakeApiImpl implements FakeApi {
         // header params
         MultiMap localVarHeaderParams = MultiMap.caseInsensitiveMultiMap();
         if (header1 != null)
-        localVarHeaderParams.add("header_1", apiClient.parameterToString(header1));
+        {
+            localVarHeaderParams.add("header_1", apiClient.parameterToString(header1));
+        }
 
         // cookie params
         MultiMap localVarCookieParams = MultiMap.caseInsensitiveMultiMap();
@@ -812,7 +814,9 @@ if (paramCallback != null) localVarFormParams.put("callback", paramCallback);
         if (enumHeaderStringArray != null)
         localVarHeaderParams.add("enum_header_string_array", apiClient.parameterToString(enumHeaderStringArray));
 if (enumHeaderString != null)
-        localVarHeaderParams.add("enum_header_string", apiClient.parameterToString(enumHeaderString));
+        {
+            localVarHeaderParams.add("enum_header_string", apiClient.parameterToString(enumHeaderString));
+        }
 
         // cookie params
         MultiMap localVarCookieParams = MultiMap.caseInsensitiveMultiMap();
@@ -892,7 +896,9 @@ if (enumFormString != null) localVarFormParams.put("enum_form_string", enumFormS
         if (requiredBooleanGroup != null)
         localVarHeaderParams.add("required_boolean_group", apiClient.parameterToString(requiredBooleanGroup));
 if (booleanGroup != null)
-        localVarHeaderParams.add("boolean_group", apiClient.parameterToString(booleanGroup));
+        {
+            localVarHeaderParams.add("boolean_group", apiClient.parameterToString(booleanGroup));
+        }
 
         // cookie params
         MultiMap localVarCookieParams = MultiMap.caseInsensitiveMultiMap();

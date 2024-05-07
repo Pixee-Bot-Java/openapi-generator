@@ -128,7 +128,9 @@ public class PetApi extends BaseApi {
         final MultiValueMap<String, Object> localVarFormParams = new LinkedMultiValueMap<String, Object>();
 
         if (apiKey != null)
-        localVarHeaderParams.add("api_key", apiClient.parameterToString(apiKey));
+        {
+            localVarHeaderParams.add("api_key", apiClient.parameterToString(apiKey));
+        }
 
         final String[] localVarAccepts = {  };
         final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

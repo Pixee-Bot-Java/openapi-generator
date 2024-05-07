@@ -84,7 +84,9 @@ public class AnotherFakeApiImpl implements AnotherFakeApi {
         // header params
         MultiMap localVarHeaderParams = MultiMap.caseInsensitiveMultiMap();
         if (uuidTest != null)
-        localVarHeaderParams.add("uuid_test", apiClient.parameterToString(uuidTest));
+        {
+            localVarHeaderParams.add("uuid_test", apiClient.parameterToString(uuidTest));
+        }
 
         // cookie params
         MultiMap localVarCookieParams = MultiMap.caseInsensitiveMultiMap();
