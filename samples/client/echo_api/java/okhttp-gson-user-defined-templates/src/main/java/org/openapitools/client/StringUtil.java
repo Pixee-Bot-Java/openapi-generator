@@ -25,6 +25,9 @@ public class StringUtil {
    * @param value The value to search
    * @return true if the array contains the value
    */
+  private StringUtil() {
+  }
+  
   public static boolean containsIgnoreCase(String[] array, String value) {
     for (String str : array) {
       if (value == null && str == null) {

@@ -49,6 +49,9 @@ import java.util.TimeZone;
  *       backward-compatibility
  */
 public class JSON {
+    private JSON() {
+    }
+    
     private static Gson gson;
     private static boolean isLenientOnJson = false;
     private static DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
