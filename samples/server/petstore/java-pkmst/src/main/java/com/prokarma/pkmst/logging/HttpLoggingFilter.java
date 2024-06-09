@@ -1,5 +1,6 @@
 package com.prokarma.pkmst.logging;
 
+import io.github.pixee.security.Newlines;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -386,7 +387,7 @@ public class HttpLoggingFilter implements Filter {
 
     @Override
     public void setHeader(String name, String value) {
-      original.setHeader(name, value);
+      original.setHeader(name, Newlines.stripAll(value));
     }
 
     @Override
