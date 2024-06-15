@@ -16,43 +16,14 @@
 
 package org.openapitools.codegen;
 
-import com.google.common.collect.Sets;
-import com.samskivert.mustache.Mustache.Lambda;
-
-import io.swagger.parser.OpenAPIParser;
-import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.PathItem;
-import io.swagger.v3.oas.models.headers.Header;
 import io.swagger.v3.oas.models.media.*;
-import io.swagger.v3.oas.models.parameters.Parameter;
-import io.swagger.v3.oas.models.parameters.QueryParameter;
-import io.swagger.v3.oas.models.parameters.RequestBody;
-import io.swagger.v3.oas.models.responses.ApiResponse;
-import io.swagger.v3.oas.models.responses.ApiResponses;
-import io.swagger.v3.oas.models.security.SecurityScheme;
-import io.swagger.v3.parser.core.models.ParseOptions;
 
-import org.openapitools.codegen.config.CodegenConfigurator;
-import org.openapitools.codegen.config.GlobalSettings;
-import org.openapitools.codegen.model.ModelMap;
-import org.openapitools.codegen.model.ModelsMap;
-import org.openapitools.codegen.templating.mustache.CamelCaseAndSanitizeLambda;
-import org.openapitools.codegen.templating.mustache.IndentedLambda;
-import org.openapitools.codegen.templating.mustache.LowercaseLambda;
-import org.openapitools.codegen.templating.mustache.TitlecaseLambda;
-import org.openapitools.codegen.templating.mustache.UppercaseLambda;
 import org.openapitools.codegen.utils.ModelUtils;
-import org.openapitools.codegen.utils.SemVer;
-import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.testng.Assert.*;
 
@@ -178,6 +149,9 @@ public class OpenAPINormalizerTest {
         Schema schema13 = openAPI.getComponents().getSchemas().get("OneOfAnyType");
         assertEquals(schema13.getOneOf().size(), 6);
 
+        Schema schema15 = openAPI.getComponents().getSchemas().get("AnyOfAnyTypeWithRef");
+        assertEquals(schema15.getAnyOf().size(), 6);
+
         Map<String, String> options = new HashMap<>();
         options.put("SIMPLIFY_ONEOF_ANYOF", "true");
         OpenAPINormalizer openAPINormalizer = new OpenAPINormalizer(openAPI, options);
@@ -216,6 +190,9 @@ public class OpenAPINormalizerTest {
         assertEquals(schema14.getOneOf(), null);
         assertEquals(schema14.getType(), null);
 
+        Schema schema16 = openAPI.getComponents().getSchemas().get("AnyOfAnyTypeWithRef");
+        assertEquals(schema16.getAnyOf(), null);
+        assertEquals(schema16.getType(), null);
     }
 
     @Test

@@ -18,6 +18,7 @@ docs/ArrayOfArrayOfModel.md
 docs/ArrayOfArrayOfNumberOnly.md
 docs/ArrayOfNumberOnly.md
 docs/ArrayTest.md
+docs/BaseDiscriminator.md
 docs/BasquePig.md
 docs/Bathing.md
 docs/Capitalization.md
@@ -55,6 +56,7 @@ docs/FormatTest.md
 docs/HasOnlyReadOnly.md
 docs/HealthCheckResult.md
 docs/ImportTestDatetimeApi.md
+docs/Info.md
 docs/InnerDictWithProperty.md
 docs/InputAllOf.md
 docs/IntOrString.md
@@ -84,6 +86,7 @@ docs/Pet.md
 docs/PetApi.md
 docs/Pig.md
 docs/PoopCleaning.md
+docs/PrimitiveString.md
 docs/PropertyMap.md
 docs/PropertyNameCollision.md
 docs/ReadOnlyFirst.md
@@ -98,9 +101,12 @@ docs/StoreApi.md
 docs/Tag.md
 docs/Task.md
 docs/TaskActivity.md
+docs/TestEnum.md
+docs/TestEnumWithDefault.md
 docs/TestErrorResponsesWithModel400Response.md
 docs/TestErrorResponsesWithModel404Response.md
 docs/TestInlineFreeformAdditionalPropertiesRequest.md
+docs/TestModelWithEnumDefault.md
 docs/TestObjectForMultipartRequestsRequestMarker.md
 docs/Tiger.md
 docs/UnnamedDictWithAdditionalModelListProperties.md
@@ -138,6 +144,7 @@ petstore_api/models/array_of_array_of_model.py
 petstore_api/models/array_of_array_of_number_only.py
 petstore_api/models/array_of_number_only.py
 petstore_api/models/array_test.py
+petstore_api/models/base_discriminator.py
 petstore_api/models/basque_pig.py
 petstore_api/models/bathing.py
 petstore_api/models/capitalization.py
@@ -171,6 +178,7 @@ petstore_api/models/foo_get_default_response.py
 petstore_api/models/format_test.py
 petstore_api/models/has_only_read_only.py
 petstore_api/models/health_check_result.py
+petstore_api/models/info.py
 petstore_api/models/inner_dict_with_property.py
 petstore_api/models/input_all_of.py
 petstore_api/models/int_or_string.py
@@ -199,6 +207,7 @@ petstore_api/models/parent_with_optional_dict.py
 petstore_api/models/pet.py
 petstore_api/models/pig.py
 petstore_api/models/poop_cleaning.py
+petstore_api/models/primitive_string.py
 petstore_api/models/property_map.py
 petstore_api/models/property_name_collision.py
 petstore_api/models/read_only_first.py
@@ -212,9 +221,12 @@ petstore_api/models/special_name.py
 petstore_api/models/tag.py
 petstore_api/models/task.py
 petstore_api/models/task_activity.py
+petstore_api/models/test_enum.py
+petstore_api/models/test_enum_with_default.py
 petstore_api/models/test_error_responses_with_model400_response.py
 petstore_api/models/test_error_responses_with_model404_response.py
 petstore_api/models/test_inline_freeform_additional_properties_request.py
+petstore_api/models/test_model_with_enum_default.py
 petstore_api/models/test_object_for_multipart_requests_request_marker.py
 petstore_api/models/tiger.py
 petstore_api/models/unnamed_dict_with_additional_model_list_properties.py
