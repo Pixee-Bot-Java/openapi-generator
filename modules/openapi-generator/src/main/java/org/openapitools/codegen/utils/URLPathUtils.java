@@ -17,6 +17,8 @@
 
 package org.openapitools.codegen.utils;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.servers.Server;
 import io.swagger.v3.oas.models.servers.ServerVariable;
@@ -65,7 +67,7 @@ public class URLPathUtils {
             url = sanitizeUrl(url);
 
             try {
-                return new URL(url);
+                return Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             } catch (MalformedURLException e) {
                 once(LOGGER).warn("Not valid URL: {}. Default to {}.", server.getUrl(), LOCAL_HOST);
             }
