@@ -1,6 +1,7 @@
 package org.openapitools.codegen.languages;
 
 import com.google.common.collect.Sets;
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.media.ComposedSchema;
 import io.swagger.v3.oas.models.media.Schema;
@@ -807,7 +808,7 @@ public abstract class AbstractDartCodegen extends DefaultCodegen {
             // currently supported is "dartfmt -w" and "dart format"
             String command = dartPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({}). Exit code: {}", command, exitValue);

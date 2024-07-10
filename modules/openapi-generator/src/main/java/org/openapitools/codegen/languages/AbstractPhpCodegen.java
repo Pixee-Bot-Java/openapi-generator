@@ -16,6 +16,7 @@
 
 package org.openapitools.codegen.languages;
 
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.media.StringSchema;
 import lombok.Getter;
@@ -838,7 +839,7 @@ public abstract class AbstractPhpCodegen extends DefaultCodegen implements Codeg
         if ("php".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = phpPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 p.waitFor();
                 int exitValue = p.exitValue();
                 if (exitValue != 0) {

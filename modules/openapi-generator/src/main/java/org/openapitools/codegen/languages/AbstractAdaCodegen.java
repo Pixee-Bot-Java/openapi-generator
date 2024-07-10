@@ -19,6 +19,7 @@ package org.openapitools.codegen.languages;
 
 import com.samskivert.mustache.Escapers;
 import com.samskivert.mustache.Mustache;
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
@@ -1067,7 +1068,7 @@ abstract public class AbstractAdaCodegen extends DefaultCodegen implements Codeg
             }
 
             try {
-                Process p = Runtime.getRuntime().exec(new String[]{commandPrefix, "--no-compact", "--quiet", file.toString()});
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), new String[]{commandPrefix, "--no-compact", "--quiet", file.toString()});
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({} {}). Exit code: {}", commandPrefix, file, exitValue);
