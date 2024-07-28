@@ -68,15 +68,25 @@ public class HeaderApi {
 
 
         if (integerHeader != null)
-        headerParams.add("integer_header", apiClient.parameterToString(integerHeader));
+        {
+            headerParams.add("integer_header", apiClient.parameterToString(integerHeader));
+        }
         if (booleanHeader != null)
-        headerParams.add("boolean_header", apiClient.parameterToString(booleanHeader));
+        {
+            headerParams.add("boolean_header", apiClient.parameterToString(booleanHeader));
+        }
         if (stringHeader != null)
-        headerParams.add("string_header", apiClient.parameterToString(stringHeader));
+        {
+            headerParams.add("string_header", apiClient.parameterToString(stringHeader));
+        }
         if (enumNonrefStringHeader != null)
-        headerParams.add("enum_nonref_string_header", apiClient.parameterToString(enumNonrefStringHeader));
+        {
+            headerParams.add("enum_nonref_string_header", apiClient.parameterToString(enumNonrefStringHeader));
+        }
         if (enumRefStringHeader != null)
-        headerParams.add("enum_ref_string_header", apiClient.parameterToString(enumRefStringHeader));
+        {
+            headerParams.add("enum_ref_string_header", apiClient.parameterToString(enumRefStringHeader));
+        }
         final String[] localVarAccepts = { 
             "text/plain"
         };
