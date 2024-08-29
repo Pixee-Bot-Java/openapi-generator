@@ -1,5 +1,6 @@
 package com.prokarma.pkmst.logging;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -143,7 +144,7 @@ public class HttpLoggingFilter implements Filter {
       String line = null;
       StringBuilder inputBuffer = new StringBuilder();
       do {
-        line = reader.readLine();
+        line = BoundedLineReader.readLine(reader, 5_000_000);
         if (null != line) {
           inputBuffer.append(line.trim());
         }
