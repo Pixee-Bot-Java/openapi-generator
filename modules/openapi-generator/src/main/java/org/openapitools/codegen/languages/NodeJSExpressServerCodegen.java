@@ -19,6 +19,7 @@ package org.openapitools.codegen.languages;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.PathItem;
@@ -435,7 +436,7 @@ public class NodeJSExpressServerCodegen extends DefaultCodegen implements Codege
         if ("js".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = jsPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 p.waitFor();
                 int exitValue = p.exitValue();
                 if (exitValue != 0) {

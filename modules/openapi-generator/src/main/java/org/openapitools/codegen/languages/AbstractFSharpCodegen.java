@@ -18,6 +18,7 @@ package org.openapitools.codegen.languages;
 
 import com.google.common.collect.ImmutableMap;
 import com.samskivert.mustache.Mustache.Lambda;
+import io.github.pixee.security.SystemCommand;
 
 import io.swagger.v3.core.util.Json;
 import io.swagger.v3.oas.models.media.Schema;
@@ -1052,7 +1053,7 @@ public abstract class AbstractFSharpCodegen extends DefaultCodegen implements Co
         if ("fs".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = fsharpPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({}). Exit code: {}", command, exitValue);

@@ -17,6 +17,7 @@
 
 package org.openapitools.codegen.languages;
 
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.media.Schema;
@@ -1472,7 +1473,7 @@ public class HaskellHttpClientCodegen extends DefaultCodegen implements CodegenC
         if ("hs".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = haskellPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({}). Exit value: {}", command, exitValue);
