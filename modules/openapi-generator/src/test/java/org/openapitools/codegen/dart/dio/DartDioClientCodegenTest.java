@@ -16,6 +16,7 @@
 
 package org.openapitools.codegen.dart.dio;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.openapitools.codegen.ClientOptInput;
 import org.openapitools.codegen.CodegenConstants;
 import org.openapitools.codegen.DefaultGenerator;
@@ -84,7 +85,7 @@ public class DartDioClientCodegenTest {
         List<String> reservedWordsList = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/resources/dart/dart-keywords.txt"), StandardCharsets.UTF_8));
-            while(reader.ready()) { reservedWordsList.add(reader.readLine()); }
+            while(reader.ready()) { reservedWordsList.add(BoundedLineReader.readLine(reader, 5_000_000)); }
             reader.close();
         } catch (Exception e) {
             String errorString = String.format(Locale.ROOT, "Error reading dart keywords: %s", e);

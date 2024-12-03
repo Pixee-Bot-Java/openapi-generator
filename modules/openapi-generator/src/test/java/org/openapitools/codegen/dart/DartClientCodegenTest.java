@@ -17,6 +17,7 @@
 
 package org.openapitools.codegen.dart;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -69,7 +70,7 @@ public class DartClientCodegenTest {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/resources/dart/dart-keywords.txt"), StandardCharsets.UTF_8));
             while(reader.ready()) {
-                reservedWordsList.add(reader.readLine());
+                reservedWordsList.add(BoundedLineReader.readLine(reader, 5_000_000));
             }
             reader.close();
         } catch (Exception e) {

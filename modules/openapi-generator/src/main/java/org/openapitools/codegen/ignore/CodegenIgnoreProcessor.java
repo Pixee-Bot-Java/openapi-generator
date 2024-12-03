@@ -17,6 +17,7 @@
 
 package org.openapitools.codegen.ignore;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.openapitools.codegen.ignore.rules.DirectoryRule;
 import org.openapitools.codegen.ignore.rules.Rule;
 import org.slf4j.Logger;
@@ -112,7 +113,7 @@ public class CodegenIgnoreProcessor {
 
             // NOTE: Comments that start with a : (e.g. //:) are pulled from git documentation for .gitignore
             // see: https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/gitignore.txt
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 if(
                     //: A blank line matches no files, so it can serve as a separator for readability.
                     line.length() == 0

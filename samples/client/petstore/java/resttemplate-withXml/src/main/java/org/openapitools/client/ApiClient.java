@@ -2,6 +2,7 @@ package org.openapitools.client;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -909,10 +910,10 @@ public class ApiClient extends JavaTimeFormatter {
         private String bodyToString(InputStream body) throws IOException {
             StringBuilder builder = new StringBuilder();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(body, StandardCharsets.UTF_8));
-            String line = bufferedReader.readLine();
+            String line = BoundedLineReader.readLine(bufferedReader, 5_000_000);
             while (line != null) {
                 builder.append(line).append(System.lineSeparator());
-                line = bufferedReader.readLine();
+                line = BoundedLineReader.readLine(bufferedReader, 5_000_000);
             }
             bufferedReader.close();
             return builder.toString();
