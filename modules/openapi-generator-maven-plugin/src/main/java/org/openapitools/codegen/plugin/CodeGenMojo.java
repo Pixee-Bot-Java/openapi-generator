@@ -19,6 +19,8 @@ package org.openapitools.codegen.plugin;
 
 import com.google.common.hash.Hashing;
 import com.google.common.io.Files;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import io.swagger.parser.OpenAPIParser;
 import io.swagger.v3.core.util.Json;
 import io.swagger.v3.core.util.Yaml;
@@ -1037,7 +1039,7 @@ public class CodeGenMojo extends AbstractMojo {
         for (Artifact artifact : project.getArtifacts()) {
             try {
                 if (artifact.isResolved() && artifact.getType().equals("jar")) {
-                    list.add(new URL("jar:" + artifact.getFile().toURI() + "!/"));
+                    list.add(Urls.create("jar:" + artifact.getFile().toURI() + "!/", Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
                 }
             } catch (Exception e) {
             }
