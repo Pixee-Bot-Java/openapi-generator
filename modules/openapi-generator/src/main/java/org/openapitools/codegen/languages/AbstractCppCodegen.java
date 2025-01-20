@@ -19,6 +19,7 @@ package org.openapitools.codegen.languages;
 
 import com.google.common.collect.ImmutableMap;
 import com.samskivert.mustache.Mustache.Lambda;
+import io.github.pixee.security.SystemCommand;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.media.Schema;
@@ -348,7 +349,7 @@ abstract public class AbstractCppCodegen extends DefaultCodegen implements Codeg
         if ("cpp".equals(FilenameUtils.getExtension(file.toString())) || "h".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = cppPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 p.waitFor();
                 int exitValue = p.exitValue();
                 if (exitValue != 0) {

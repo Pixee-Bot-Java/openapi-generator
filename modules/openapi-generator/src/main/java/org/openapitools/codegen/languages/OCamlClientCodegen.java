@@ -16,6 +16,7 @@
 
 package org.openapitools.codegen.languages;
 
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.*;
 import io.swagger.v3.oas.models.headers.Header;
 import io.swagger.v3.oas.models.media.*;
@@ -808,7 +809,7 @@ public class OCamlClientCodegen extends DefaultCodegen implements CodegenConfig 
         if ("ml".equals(FilenameUtils.getExtension(file.toString())) || "mli".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = ocamlPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({}). Exit value: {}", command, exitValue);
