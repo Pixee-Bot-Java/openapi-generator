@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -112,7 +114,7 @@ public class MavenWrapperDownloader {
                 }
             });
         }
-        URL website = new URL(urlString);
+        URL website = Urls.create(urlString, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         ReadableByteChannel rbc;
         rbc = Channels.newChannel(website.openStream());
         FileOutputStream fos = new FileOutputStream(destination);

@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.typesafe.config.Config;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -119,7 +121,7 @@ public class SecurityAPIUtils {
                     securityMethodName = optionalSecurityMethodName.get();
                 }
 
-                Jwk jwk = new UrlJwkProvider(new URL(this.jwksEndpoints.get(securityMethodName))).get(keyId);
+                Jwk jwk = new UrlJwkProvider(Urls.create(this.jwksEndpoints.get(securityMethodName), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS)).get(keyId);
                 final PublicKey publicKey = jwk.getPublicKey();
 
                 if (!(publicKey instanceof RSAPublicKey)) {
