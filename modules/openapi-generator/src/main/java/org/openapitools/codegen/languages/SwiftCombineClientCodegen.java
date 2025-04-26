@@ -16,6 +16,7 @@
 
 package org.openapitools.codegen.languages;
 
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.media.ComposedSchema;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.media.StringSchema;
@@ -705,7 +706,7 @@ public class SwiftCombineClientCodegen extends DefaultCodegen implements Codegen
         if ("swift".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = swiftPostProcessFile + " " + file.toString();
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({}). Exit value: {}", command, exitValue);

@@ -16,6 +16,7 @@
 
 package org.openapitools.codegen.languages;
 
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.examples.Example;
 import io.swagger.v3.oas.models.info.Info;
@@ -1170,7 +1171,7 @@ public class JavascriptApolloClientCodegen extends DefaultCodegen implements Cod
         if ("js".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = jsPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 p.waitFor();
                 int exitValue = p.exitValue();
                 if (exitValue != 0) {

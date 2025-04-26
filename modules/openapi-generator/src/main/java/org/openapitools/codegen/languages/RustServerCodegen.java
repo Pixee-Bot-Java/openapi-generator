@@ -17,6 +17,7 @@
 
 package org.openapitools.codegen.languages;
 
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.core.util.Json;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
@@ -1397,7 +1398,7 @@ public class RustServerCodegen extends AbstractRustCodegen implements CodegenCon
         // only process files with .rs extension
         if ("rs".equals(FilenameUtils.getExtension(file.toString()))) {
             try {
-                Process p = Runtime.getRuntime().exec(new String[]{commandPrefix, file.toString()});
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), new String[]{commandPrefix, file.toString()});
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({} {}). Exit code: {}", commandPrefix, file, exitValue);

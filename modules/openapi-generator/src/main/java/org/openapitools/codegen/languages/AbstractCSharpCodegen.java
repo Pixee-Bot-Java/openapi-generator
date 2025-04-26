@@ -21,6 +21,7 @@ import com.google.common.collect.ImmutableMap;
 import com.samskivert.mustache.Mustache.Lambda;
 import com.samskivert.mustache.Mustache;
 import com.samskivert.mustache.Template;
+import io.github.pixee.security.SystemCommand;
 
 import io.swagger.v3.oas.models.media.Schema;
 import lombok.Getter;
@@ -1836,7 +1837,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen {
         if ("cs".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = csharpPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({}). Exit code: {}", command, exitValue);
