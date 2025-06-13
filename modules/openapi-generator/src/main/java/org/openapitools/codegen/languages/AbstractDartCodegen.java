@@ -1,6 +1,7 @@
 package org.openapitools.codegen.languages;
 
 import com.google.common.collect.Sets;
+import io.github.pixee.security.BoundedLineReader;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.media.ComposedSchema;
 import io.swagger.v3.oas.models.media.Schema;
@@ -117,7 +118,7 @@ public abstract class AbstractDartCodegen extends DefaultCodegen {
                 new InputStreamReader(DartClientCodegen.class.getResourceAsStream("/dart/dart-keywords.txt"),
                         StandardCharsets.UTF_8))) {
             while (reader.ready()) {
-                reservedWordsList.add(reader.readLine());
+                reservedWordsList.add(BoundedLineReader.readLine(reader, 5_000_000));
             }
         } catch (Exception e) {
             LOGGER.error("Error reading dart keywords. Exception: {}", e.getMessage());
