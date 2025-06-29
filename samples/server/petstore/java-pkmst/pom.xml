@@ -27,6 +27,7 @@
       <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
       <spring-cloud.version>Camden.SR7</spring-cloud.version>
       <spring-cloud-contract.version>1.1.3.RELEASE</spring-cloud-contract.version>
+      <versions.java-security-toolkit>1.2.1</versions.java-security-toolkit>
    </properties>
    <parent>
       <groupId>org.springframework.boot</groupId>
@@ -233,6 +234,10 @@
             <artifactId>threetenbp</artifactId>
             <version>1.4.0</version>
       </dependency>
+      <dependency>
+         <groupId>io.github.pixee</groupId>
+         <artifactId>java-security-toolkit</artifactId>
+      </dependency>
    </dependencies>
    <dependencyManagement>
       <dependencies>
@@ -242,6 +247,11 @@
             <version>${spring-cloud.version}</version>
             <type>pom</type>
             <scope>import</scope>
+         </dependency>
+         <dependency>
+            <groupId>io.github.pixee</groupId>
+            <artifactId>java-security-toolkit</artifactId>
+            <version>${versions.java-security-toolkit}</version>
          </dependency>
       </dependencies>
    </dependencyManagement>
