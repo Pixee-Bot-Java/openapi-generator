@@ -17,6 +17,7 @@
 
 package org.openapitools.codegen.languages;
 
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.parameters.Parameter;
@@ -1089,7 +1090,7 @@ public abstract class AbstractTypeScriptClientCodegen extends DefaultCodegen imp
         if ("ts".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = tsPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({}). Exit value: {}", command, exitValue);

@@ -17,6 +17,7 @@
 
 package org.openapitools.codegen.languages;
 
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.media.Schema;
 import lombok.Setter;
 import org.apache.commons.io.FilenameUtils;
@@ -639,7 +640,7 @@ public class PerlClientCodegen extends DefaultCodegen implements CodegenConfig {
                 "pl".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = perlTidyPath + " -b -bext='/' " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({}). Exit code: {}", command, exitValue);

@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.google.common.base.Strings;
 import com.google.common.collect.Sets;
 import com.samskivert.mustache.Mustache;
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.PathItem;
@@ -2301,7 +2302,7 @@ public abstract class AbstractJavaCodegen extends DefaultCodegen implements Code
         if ("java".equals(FilenameUtils.getExtension(file.toString()))) {
             String command = javaPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 p.waitFor();
                 int exitValue = p.exitValue();
                 if (exitValue != 0) {
