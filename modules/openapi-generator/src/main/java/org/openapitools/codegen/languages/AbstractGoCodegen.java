@@ -17,6 +17,7 @@
 
 package org.openapitools.codegen.languages;
 
+import io.github.pixee.security.SystemCommand;
 import io.swagger.v3.oas.models.media.Schema;
 import lombok.Setter;
 import org.apache.commons.io.FilenameUtils;
@@ -952,7 +953,7 @@ public abstract class AbstractGoCodegen extends DefaultCodegen implements Codege
             // e.g. "go fmt path/to/your/package"
             String command = goPostProcessFile + " " + file;
             try {
-                Process p = Runtime.getRuntime().exec(command);
+                Process p = SystemCommand.runCommand(Runtime.getRuntime(), command);
                 int exitValue = p.waitFor();
                 if (exitValue != 0) {
                     LOGGER.error("Error running the command ({}). Exit code: {}", command, exitValue);
